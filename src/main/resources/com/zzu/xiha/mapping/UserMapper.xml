@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zzu.xiha.dao.UserDao">
+    <insert id="insertByTel">
+        insert into t_user
+        values (0, #{tel}, null, #{nickname}, #{password}, 0, #{realName}, 100, 0, 0, 0, #{city.id});
+    </insert>
+    <insert id="insertByEmail">
+        insert into t_user
+        values (0, null, #{email}, #{nickname}, #{password}, 0, #{realName}, 100, 0, 0, 0, #{city.id});
+    </insert>
+    <select id="selectByTel" resultMap="UserResultMap">
+        select t1.*,t2.city_name,t3.id area_id,t3.area_name
+        from
+            t_user t1
+                left join t_city t2 on t1.address = t2.id
+                left join t_area t3 on t2.area_id = t3.id
+        where t1.tel = #{tel}
+          and t1.password = #{password}
+    </select>
+    <select id="selectByEmail" resultMap="UserResultMap">
+        select t1.*,t2.city_name,t3.id area_id,t3.area_name
+        from
+            t_user t1
+                left join t_city t2 on t1.address = t2.id
+                left join t_area t3 on t2.area_id = t3.id
+        where email = #{email}
+          and password = #{password}
+    </select>
+    <resultMap id="UserResultMap" type="User">
+        <id column="id" property="id"/>
+        <result column="tel" property="tel"/>
+        <result column="email" property="email"/>
+        <result column="nickname" property="nickname"/>
+        <result column="status" property="status"/>
+        <result column="real_name" property="realName"/>
+        <result column="honest" property="honest"/>
+        <result column="is_owner" property="isOwner"/>
+        <result column="account" property="account"/>
+        <result column="real_status" property="realStatus"/>
+        <association property="city" javaType="City">
+            <id column="address" property="id"/>
+            <result column="city_name" property="name"/>
+            <association property="area" javaType="Area">
+                <id column="area_id" property="id"/>
+                <result column="area_name" property="areaName"/>
+            </association>
+        </association>
+    </resultMap>
+</mapper>

@@ -13,5 +13,5 @@ spring:
       suffix: /
       prefix: .jsp
 mybatis:
-  mapper-locations: com.zzu.xiha.mapping
+  mapper-locations: com/zzu/xiha/mapping/*Mapper.xml
   type-aliases-package: com.zzu.xiha.entity

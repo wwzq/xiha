@@ -1,6 +1,9 @@
 server:
   port: 8888
   context-path: /xiha
+  jsp-servlet:
+    init-parameters:
+      development: true
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -10,8 +13,8 @@ spring:
     password: 123456
   mvc:
     view:
-      suffix: /
-      prefix: .jsp
+      prefix: /
+      suffix: .jsp
 mybatis:
   mapper-locations: com/zzu/xiha/mapping/*Mapper.xml
   type-aliases-package: com.zzu.xiha.entity

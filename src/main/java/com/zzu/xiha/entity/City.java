@@ -1,9 +1,13 @@
 package com.zzu.xiha.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class City {
     //主键
+    @JSONField(name = "value")
     private Integer id;
     //城市名字
+    @JSONField(name = "text")
     private String name;
     //所属地区
     private Area area;

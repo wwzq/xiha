@@ -12,6 +12,7 @@ public class User {
     private Integer isOwner;
     private Double account;
     private Integer realStatus;
+    private String headImg;
     private City city;
 
     public User() {
@@ -111,6 +112,14 @@ public class User {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public String getHeadImg() {
+        return headImg;
+    }
+
+    public void setHeadImg(String headImg) {
+        this.headImg = headImg;
     }
 
     @Override

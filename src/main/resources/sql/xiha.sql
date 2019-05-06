@@ -393,6 +393,7 @@ create table t_appraise
   user_id  int references t_user (id),#评价人id
   appraise varchar(500),#评价内容
   status   int(1)#状态 是否可见 即删除与否
+  #加属性创建时间 add-time
 );
 #行程记录表
 create table t_travle
@@ -404,3 +405,4 @@ create table t_travle
   description     varchar(200),
   appraise_status int(1)
 );
+#建议表 主要有 建议内容 用户id 联系方式 创建时间

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zzu.xiha.dao.ItemDao">
+    <insert id="insert">
+        insert into t_item
+        values (0, sysdate(), #{startTime}, #{arriveTime}, #{car.id}, #{user.id}, #{payStatus})
+    </insert>
+    <select id="selectByUser" resultMap="ItemResultMap">
+        select *
+        from v_item
+        where user_id = #{userId}
+    </select>
+    <select id="selectByCar" resultMap="ItemResultMap">
+        select *
+        from v_item
+        where car_id = #{carId}
+    </select>
+    <update id="updatePay">
+        update t_item
+        set pay_status=1
+        where id = #{id}
+    </update>
+    <resultMap id="ItemResultMap" type="Item">
+        <id column="id" property="id"/>
+        <result column="add_time" property="addTime"/>
+        <result column="start_time" property="startTime"/>
+        <result column="arrive_time" property="arriveTime"/>
+        <result column="pay_status" property="payStatus"/>
+        <association property="car" javaType="User">
+            <id column="car_id" property="id"/>
+            <result column="carName" property="realName"/>
+            <result column="carTel" property="tel"/>
+        </association>
+        <association property="user" javaType="User">
+            <id column="user_id" property="id"/>
+            <result column="userName" property="realName"/>
+            <result column="userTel" property="tel"/>
+        </association>
+    </resultMap>
+</mapper>

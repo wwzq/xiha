@@ -3,7 +3,6 @@ package com.zzu.xiha.entity;
 public class User {
     private Integer id;
     private String tel;
-    private String email;
     private String nickname;
     private String password;
     private Integer status;
@@ -32,14 +31,6 @@ public class User {
 
     public void setTel(String tel) {
         this.tel = tel;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getNickname() {
@@ -127,7 +118,6 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", tel='" + tel + '\'' +
-                ", email='" + email + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", password='" + password + '\'' +
                 ", status=" + status +

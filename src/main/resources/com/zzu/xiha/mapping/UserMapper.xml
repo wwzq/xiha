@@ -6,11 +6,7 @@
 <mapper namespace="com.zzu.xiha.dao.UserDao">
     <insert id="insertByTel">
         insert into t_user
-        values (0, #{tel}, null, #{nickname}, #{password}, 0, #{realName}, 100, 0, 0, 0, #{city.id});
-    </insert>
-    <insert id="insertByEmail">
-        insert into t_user
-        values (0, null, #{email}, #{nickname}, #{password}, 0, #{realName}, 100, 0, 0, 0, #{city.id});
+        values (0, #{tel}, null, null, #{password}, 0, null, 100, 0, 0, 0, null);
     </insert>
     <select id="selectByTel" resultMap="UserResultMap">
         select t1.*,t2.city_name,t3.id area_id,t3.area_name
@@ -21,19 +17,34 @@
         where t1.tel = #{tel}
           and t1.password = #{password}
     </select>
-    <select id="selectByEmail" resultMap="UserResultMap">
+    <select id="selectById" resultMap="UserResultMap">
         select t1.*,t2.city_name,t3.id area_id,t3.area_name
         from
             t_user t1
                 left join t_city t2 on t1.address = t2.id
                 left join t_area t3 on t2.area_id = t3.id
-        where email = #{email}
-          and password = #{password}
+        where t1.tel = #{tel}
     </select>
+    <update id="updateAccount">
+        update t_user
+        set account=#{account}
+        where id = #{id}
+    </update>
+    <update id="update">
+        update t_user
+        set nickname=#{nickname},
+            address=#{city.id},
+            head_img=#{headImg}
+        where id = #{id}
+    </update>
+    <update id="updatePassword">
+        update t_user
+        set password=#{password}
+        where tel = #{tel}
+    </update>
     <resultMap id="UserResultMap" type="User">
         <id column="id" property="id"/>
         <result column="tel" property="tel"/>
-        <result column="email" property="email"/>
         <result column="nickname" property="nickname"/>
         <result column="status" property="status"/>
         <result column="real_name" property="realName"/>

@@ -1,5 +1,8 @@
 package com.zzu.xiha.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Crowdordering {
@@ -12,8 +15,12 @@ public class Crowdordering {
     //路线描述
     private String courseDescription;
     //出发时间
+    @JSONField(format = "yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date startTime;
     //预计到达时间
+    @JSONField(format = "yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date arriveTime;
     //汽车型号
     private String vehicleModel;

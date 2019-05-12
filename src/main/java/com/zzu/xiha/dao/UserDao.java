@@ -6,9 +6,13 @@ import org.apache.ibatis.annotations.Param;
 public interface UserDao {
     Integer insertByTel(User user);
 
-    Integer insertByEmail(User user);
-
     User selectByTel(@Param("tel") String tel, @Param("password") String password);
 
-    User selectByEmail(@Param("email") String email, @Param("password") String password);
+    User selectById(String tel);
+
+    Integer updateAccount(@Param("id") Integer id, @Param("account") Double account);
+
+    Integer update(User user);
+
+    Integer updatePassword(@Param("tel") String tel, @Param("password") String password);
 }

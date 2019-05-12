@@ -56,12 +56,49 @@
         <div class="mui-col-xs-1"></div>
         <div class="mui-col-xs-5">
             <span class="mui-icon mui-icon-map" style="font-size: 20px;float: left">热门路线</span>
+            <br>
+            <br>
+            <table style="border-collapse:separate; border-spacing:20px;">
+                <tr>
+                    <td>152454</td>
+                </tr>
+                <tr>
+                    <td>152454</td>
+                </tr>
+                <tr>
+                    <td>152454</td>
+                </tr>
+                <tr>
+                    <td>152454</td>
+                </tr>
+                <tr>
+                    <td>152454</td>
+                </tr>
+            </table>
         </div>
         <div class="mui-col-xs-5">
             <span class="mui-icon mui-icon-help" style="font-size: 20px;float: right">其他路线？</span>
+            <br>
+            <br>
+            <table style="border-collapse:separate; border-spacing:20px;">
+                <tr>
+                    <td>152454</td>
+                </tr>
+                <tr>
+                    <td>152454</td>
+                </tr>
+                <tr>
+                    <td>152454</td>
+                </tr>
+                <tr>
+                    <td>152454</td>
+                </tr>
+                <tr>
+                    <td>152454</td>
+                </tr>
+            </table>
         </div>
         <div class="mui-col-xs-1"></div>
-
     </div>
 </div>
 <script>

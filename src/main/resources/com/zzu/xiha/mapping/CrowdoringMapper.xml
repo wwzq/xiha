@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zzu.xiha.dao.CrowdorderingDao">
+    <select id="selectHot" resultMap="CrowResultMap">
+        select *
+        from v_crowdordering
+        order by start_time desc
+        limit 10
+    </select>
+    <select id="selectByCity" resultMap="CrowResultMap">
+        select *
+        from v_crowdordering
+        where bid = #{btcityId}
+          and tid = #{toCityId}
+    </select>
+    <select id="selectByBeCity" resultMap="CrowResultMap">
+        select *
+        from v_crowdordering
+        where bid = #{bCityId}
+    </select>
+    <insert id="insert">
+        insert into v_crowdordering
+        values (0, #{beCity.id}, #{destination.id}, #{courseDescription}, #{startTime}, #{arriveTime}, #{vehicleModel},
+                #{remanentSeat}, #{price}, #{comment}, #{owner.id})
+    </insert>
+    <resultMap id="CrowResultMap" type="Crowdordering">
+        <id column="id" property="id"/>
+        <result column="course_description" property="courseDescription"/>
+        <result column="start_time" property="startTime"/>
+        <result column="arrive_time" property="arriveTime"/>
+        <result column="vehicle_model" property="vehicleModel"/>
+        <result column="remanent_seat" property="remanentSeat"/>
+        <result column="price" property="price"/>
+        <result column="comment" property="comment"/>
+        <association property="beCity" javaType="City">
+            <id column="bid" property="name"/>
+            <result column="bname" property="name"/>
+            <association property="area" javaType="Area">
+                <id column="baid" property="id"/>
+                <result column="baname" property="areaName"/>
+            </association>
+        </association>
+        <association property="destination" javaType="City">
+            <id column="tid" property="name"/>
+            <result column="tname" property="name"/>
+            <association property="area" javaType="Area">
+                <id column="taid" property="id"/>
+                <result column="taname" property="areaName"/>
+            </association>
+        </association>
+        <association property="owner" javaType="User">
+            <id column="uid" property="id"/>
+            <result column="uname" property="realName"/>
+        </association>
+    </resultMap>
+</mapper>

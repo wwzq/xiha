@@ -1,5 +1,8 @@
 package com.zzu.xiha.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /*
@@ -15,6 +18,8 @@ public class Appraise {
     //评价内容
     private String appraise;
     //创建时间
+    @JSONField(format = "yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date addTime;
     //状态
     private Integer status;

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zzu.xiha.dao.AppraiseDao">
+    <insert id="insert">
+        insert into t_appraise
+        values (0, #{car.id}, #{user.id}, #{appraise}, 0, sysdate())
+    </insert>
+    <select id="selectByUserId" resultMap="AppraiseResultMap">
+        select *
+        from v_appraise
+        where user_id = #{userId}
+          and status = 0
+    </select>
+    <select id="selectByCarId" resultMap="AppraiseResultMap">
+        select *
+        from v_appraise
+        where car_id = #{carId}
+          and status = 0
+    </select>
+    <update id="deleteOne">
+        update v_appraise
+        set status=1
+        where id = #{id}
+    </update>
+    <resultMap id="AppraiseResultMap" type="Appraise">
+        <id column="id" property="id"/>
+        <result column="appraise" property="appraise"/>
+        <result column="status" property="status"/>
+        <result column="add_time" property="addTime"/>
+        <association property="car">
+            <id column="car_id" property="id"/>
+            <result column="cName" property="realName"/>
+        </association>
+        <association property="user">
+            <id column="user_id" property="id"/>
+            <result column="uName" property="realName"/>
+        </association>
+    </resultMap>
+</mapper>

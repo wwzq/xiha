@@ -35,15 +35,15 @@
                     <label>密码</label>
                     <input id="password" type="password" class="mui-input-password" placeholder="请输入密码">
                 </div>
+                <br>
                 <div class="mui-button-row">
-                    <button id="submit" type="button" class="mui-btn mui-btn-primary">确认</button>
-                    <button type="button" class="mui-btn mui-btn-danger">取消</button>
+                    <button id="submit" type="button" class="mui-btn mui-btn-primary" style="width: 100px">登录</button>
                 </div>
             </form>
         </div>
     </div>
     <div class="mui-card-footer" style="height: 300px">
-        <a href="#" style="margin: auto;line-height: 300px">常见问题？</a>
+        <a href="#" style="margin: auto;line-height: 300px">忘记密码？</a>
     </div>
 </div>
 <script>
@@ -52,10 +52,10 @@
     $(function () {
         $("#username").blur(checkname = function () {
             var username = $("#username").val()
-            if (/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(username) || /^1[34578]\d{9}$/.test(username)) {
+            if (/^1[34578]\d{9}$/.test(username)) {
                 return true
             } else {
-                mui.toast('用户名只能为手机号或邮箱！', {duration: 'long', type: 'div'})
+                mui.toast('用户名格式不正确！', {duration: 'long', type: 'div'})
                 $("#username").val("")
                 return false
             }

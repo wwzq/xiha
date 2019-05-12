@@ -106,7 +106,7 @@
 <div class="mui-row">
     <div class="mui-col-xs-1"></div>
     <div class="mui-col-xs-10">
-        <span class="mui-icon mui-icon-phone" style="font-size: 16px">  修改手机号：</span>
+        <span class="mui-icon mui-icon-phone" style="font-size: 16px">  修改密码：</span>
     </div>
     <div class="mui-col-xs-1">
         <span class="mui-icon mui-icon-arrowright"></span>
@@ -116,7 +116,7 @@
 <div class="mui-row">
     <div class="mui-col-xs-1"></div>
     <div class="mui-col-xs-10">
-        <span class="mui-icon mui-icon-compose" style="font-size: 16px">  修改姓名：</span>
+        <span class="mui-icon mui-icon-compose" style="font-size: 16px">  修改资料：</span>
     </div>
     <div class="mui-col-xs-1">
         <span class="mui-icon mui-icon-arrowright"></span>

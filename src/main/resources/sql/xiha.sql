@@ -406,3 +406,57 @@ create table t_travle
   appraise_status int(1)
 );
 #建议表 主要有 建议内容 用户id 联系方式 创建时间
+
+
+create view v_crowdordering as
+select t_crowdordering.*,
+       t_city.id        bid,
+       t_city.city_name bname,
+       t_area.id        baid,
+       t_area.area_name baname,
+       t1.id            tid,
+       t1.city_name     tname,
+       t2.id            taid,
+       t2.area_name     taname,
+       t_user.id        uid,
+       t_user.real_name uname
+from t_crowdordering
+       left join t_city on t_crowdordering.becity = t_city.id
+       left join t_area on t_city.area_id = t_area.id
+       left join t_city t1 on t1.id = t_crowdordering.destination
+       left join t_area t2 on t1.area_id = t2.id
+       left join t_user on t_crowdordering.owner_id = t_user.id;
+
+select *
+from v_crowdordering
+order by start_time desc
+limit 3;
+select *
+from v_crowdordering
+where bid = 12
+  and tid = 14;
+
+create view v_item as
+select t_item.*,
+       tu.id        carId,
+       tu.real_name carName,
+       tu.tel       carTel,
+       t1.id        userId,
+       t1.real_name userName,
+       t1.tel       userTel
+from t_item
+       left join t_user tu on t_item.car_id = tu.id
+       left join t_user t1 on t1.id = t_item.user_id;
+create view v_appraise as
+select t_appraise.*,tu.real_name cName,t1.real_name uName
+from t_appraise
+       left join t_user tu on t_appraise.car_id = tu.id
+       left join t_user t1 on t_appraise.user_id = t1.id;
+drop view v_travle;
+create view v_travle as
+select t_travle.*,c.real_name cName,u.real_name uName
+from t_travle
+       left join t_user c on t_travle.car_id = c.id
+       left join t_user u on t_travle.user_id = u.id;
+select *
+from v_travle;

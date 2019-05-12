@@ -1,16 +1,27 @@
 package com.zzu.xiha.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Item {
     //id
     private Integer id;
     //下单时间
+    @JSONField(format = "yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date addTime;
     //出发时间
+    @JSONField(format = "yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date startTime;
     //到达时间
+    @JSONField(format = "yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date arriveTime;
+    //付款状态
+    private Integer payStatus;
     //车主
     private User car;
     //乘客
@@ -65,5 +76,13 @@ public class Item {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Integer getPayStatus() {
+        return payStatus;
+    }
+
+    public void setPayStatus(Integer payStatus) {
+        this.payStatus = payStatus;
     }
 }

@@ -12,7 +12,7 @@ import com.aliyuncs.profile.DefaultProfile;
 
 public class SendCode {
     public static Boolean send(String phone, String code) throws ClientException {
-        DefaultProfile profile = DefaultProfile.getProfile("default", "LTAIVMZDIwLsfqmr", "AeZIpmtikAKE3A9FhOl9H4iWqc3TKe");
+        DefaultProfile profile = DefaultProfile.getProfile("default", "", "");
         IAcsClient client = new DefaultAcsClient(profile);
 
         CommonRequest request = new CommonRequest();
